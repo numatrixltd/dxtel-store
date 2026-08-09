@@ -1,14 +1,23 @@
 import Link from "next/link";
-import { Zap, Phone, Mail, MapPin, Facebook, Youtube, Instagram } from "lucide-react";
+import {
+  Zap,
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Youtube,
+  Instagram,
+} from "lucide-react";
+import Image from "next/image";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "/#products" },
-  { label: "Find a Partner", href: "/partners" },
+  // { label: "Products", href: "/#products" },
+  { label: "Store Locator", href: "/partners" },
   { label: "About Us", href: "/#about" },
 ];
 
-const PARTNER_LINKS = [
+const STORE_LINKS = [
   { label: "Retail Chains", href: "/partners" },
   { label: "Dealer Points", href: "/partners" },
   { label: "Become a Dealer", href: "/#contact" },
@@ -19,23 +28,25 @@ export default function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-ink text-slate-200">
       <div className="mx-auto max-w-7xl px-5 py-14 md:px-8">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-yellow-500 text-ink">
-                <Zap className="h-5 w-5" strokeWidth={2.25} fill="currentColor" />
-              </span>
-              <span className="font-display text-lg font-semibold tracking-tight text-white">
-                DX<span className="text-yellow-400">TEL</span>
-              </span>
+            <Link href="/" className="group flex items-center">
+              <Image
+                src="/assets/logo/dxx-logo.png"
+                alt="DXTEL"
+                width={140}
+                height={36}
+                priority
+                className="h-auto w-auto md:h-24 md:w-auto"
+              />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+            {/* <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
               A nationwide network of authorized retail chains and dealer
-              points, verified for genuine products and reliable service
-              across Bangladesh.
-            </p>
-            <div className="mt-5 flex gap-3">
+              points, verified for genuine products and reliable service across
+              Bangladesh.
+            </p> */}
+            {/* <div className="mt-5 flex gap-3">
               {[Facebook, Instagram, Youtube].map((Icon, i) => (
                 <a
                   key={i}
@@ -46,7 +57,7 @@ export default function Footer() {
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Quick links */}
@@ -69,12 +80,12 @@ export default function Footer() {
           </div>
 
           {/* Partner network */}
-          <div>
+          {/* <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-white">
-              Partner Network
+              Store Network
             </h3>
             <ul className="mt-4 space-y-3">
-              {PARTNER_LINKS.map((link) => (
+              {STORE_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -85,7 +96,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact */}
           <div id="contact">
@@ -95,29 +106,37 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-slate-400">
               <li className="flex items-start gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-yellow-400" />
-                <a href="tel:+8809606111777" className="hover:text-yellow-400">
-                  +880 9606 111 777
+                <a href="tel:+8801708-813798" className="hover:text-yellow-400">
+                  +8801708-813798
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-yellow-400" />
-                <a href="mailto:support@electrolinkbd.com" className="hover:text-yellow-400">
-                  support@electrolinkbd.com
+                <a
+                  href="mailto:hello@dx.com.bd"
+                  className="hover:text-yellow-400"
+                >
+                 hello@dx.com.bd
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-yellow-400" />
-                <span>Motijheel, Dhaka, Bangladesh</span>
+                <span>House # 7, Road # 54/A
+                Gulshan-2, Dhaka-1212, Bangladesh</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} ElectroLink BD. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DX. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-yellow-400">Privacy Policy</a>
-            <a href="#" className="hover:text-yellow-400">Terms of Service</a>
+            <a href="#" className="hover:text-yellow-400">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-yellow-400">
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>

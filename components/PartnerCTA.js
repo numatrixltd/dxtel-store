@@ -16,7 +16,7 @@ export default function PartnerCTA() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative mx-auto flex max-w-4xl flex-col items-center px-5 text-center md:px-8"
       >
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-500/15 text-teal-400">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500/15 text-yellow-400">
           <MapPin className="h-6 w-6" />
         </span>
         <h2 className="mt-6 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -28,7 +28,7 @@ export default function PartnerCTA() {
         </p>
         <Link
           href="/partners"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-teal-500 px-8 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-teal-400"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-yellow-500 px-8 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-yellow-400"
         >
           Open the store locator
           <ArrowUpRight className="h-4 w-4" />
