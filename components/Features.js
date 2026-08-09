@@ -41,7 +41,7 @@ export default function Features() {
     <section id="products" className="border-t border-slate-200 bg-white py-20">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="max-w-2xl">
-          <span className="font-mono text-xs uppercase tracking-widest text-teal-600">
+          <span className="font-mono text-xs uppercase tracking-widest text-yellow-600">
             Why ElectroLink
           </span>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -60,9 +60,9 @@ export default function Features() {
             <motion.div
               key={f.title}
               variants={item}
-              className="group rounded-2xl border border-slate-200 p-6 transition-colors hover:border-teal-300 hover:bg-teal-50/40"
+              className="group rounded-2xl border border-slate-200 p-6 transition-colors hover:border-yellow-300 hover:bg-yellow-50/40"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-teal-400 transition-colors group-hover:bg-teal-600">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-yellow-400 transition-colors group-hover:bg-yellow-600">
                 <f.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 font-display text-base font-semibold text-ink">

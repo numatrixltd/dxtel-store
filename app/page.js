@@ -6,10 +6,10 @@ import AuthorizedPartners from "@/components/AuthorizedPartners";
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
       <AuthorizedPartners />
-      <Features />
-      <PartnerCTA />
+      {/* <Features /> */}
+      {/* <PartnerCTA /> */}
     </>
   );
 }
