@@ -6,10 +6,6 @@ import { ChevronRight, MapPin, Phone } from "lucide-react";
 
 const brandMeta = (key) => BRANDS.find((b) => b.key === key) || BRANDS[0];
 
-// Simple heuristic to pick a readable text color against a solid brand fill.
-// Falls back to white, which works for the mid-saturation brand hexes this
-// app uses; swap for a real luminance check if a very light brand color
-// ever gets added to BRANDS.
 const onBrand = () => "#FFFFFF";
 
 export default function PartnerCard({ partner, isSelected, onSelect }) {
@@ -22,12 +18,10 @@ export default function PartnerCard({ partner, isSelected, onSelect }) {
   ].filter((v) => v && v !== "#N/A");
 
   return (
-    <motion.button
-      type="button"
+    <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      onClick={() => onSelect(partner)}
       className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-slate-200 bg-white text-left shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
       style={
         isSelected
@@ -41,7 +35,11 @@ export default function PartnerCard({ partner, isSelected, onSelect }) {
         style={{ backgroundColor: meta.color }}
       />
 
-      <div className="flex flex-1 flex-col p-5 pt-6">
+      <button
+        type="button"
+        onClick={() => onSelect(partner)}
+        className="flex flex-1 flex-col p-5 pt-6 text-left"
+      >
         {/* brand mark */}
         <div className="mb-3 flex items-center gap-2.5">
           <span
@@ -67,8 +65,6 @@ export default function PartnerCard({ partner, isSelected, onSelect }) {
           <span className="line-clamp-2">{partner.address}</span>
         </p>
 
-        {/* location hierarchy, rendered as a real breadcrumb since the data
-            genuinely nests: division > district > thana */}
         {locationTrail.length > 0 && (
           <div className="mt-4 flex flex-wrap items-center gap-1 text-xs font-medium text-slate-500">
             {locationTrail.map((level, i) => (
@@ -87,35 +83,33 @@ export default function PartnerCard({ partner, isSelected, onSelect }) {
             ))}
           </div>
         )}
-      </div>
+      </button>
 
-      {/* contract stub */}
+      {/* contract stub — now a real Call Now action */}
       {partner.contract && (
-        <div className="relative mt-auto px-5 pb-4">
-          <div
-            className="relative border-t border-dashed border-slate-300 pt-3"
-            aria-hidden="false"
-          >
+        <div className="relative mt-auto px-5 pb-5">
+          <div className="relative border-t border-dashed border-slate-300 pt-3">
             <span className="absolute -left-[9px] -top-[7px] h-3 w-3 rounded-full border border-slate-300 bg-white" />
             <span className="absolute -right-[9px] -top-[7px] h-3 w-3 rounded-full border border-slate-300 bg-white" />
 
-            <div className="flex items-center gap-2">
-              <span
-                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:-rotate-12"
-                style={{
-                  backgroundColor: `${meta.color}1A`,
-                  color: meta.color,
-                }}
-              >
-                <Phone className="h-3.5 w-3.5" />
-              </span>
+            <div className="flex items-center justify-between gap-2">
               <span className="font-mono text-[11px] tracking-wide text-slate-500">
                 {partner.contract}
               </span>
+
+              <a
+                href={`tel:${partner.phone}`}
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                style={{ backgroundColor: meta.color }}
+              >
+                <Phone className="h-3.5 w-3.5" />
+                Call Now
+              </a>
             </div>
           </div>
         </div>
       )}
-    </motion.button>
+    </motion.div>
   );
 }
