@@ -37,26 +37,29 @@ export default function PartnerListRow({ partner, isSelected, onSelect }) {
 
       <div className="flex items-start gap-4 sm:contents">
         {/* brand mark */}
-        <span
-          className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg font-display text-[12px] font-bold text-white"
-          style={{ backgroundColor: meta.color }}
-        >
-          {meta.label?.[0]?.toUpperCase() ?? "P"}
+        <span className="flex h-10 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 p-2">
+          {meta.logo ? (
+            <img
+              src={meta.logo}
+              alt={meta.label}
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <span
+              className="flex h-full w-full items-center justify-center font-display text-[12px] font-bold text-white"
+              style={{ backgroundColor: meta.color }}
+            >
+              {meta.label?.[0]?.toUpperCase() ?? "P"}
+            </span>
+          )}
         </span>
 
+       
         {/* Name + address */}
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <h3 className="font-display text-sm font-semibold leading-snug text-ink sm:truncate sm:text-base">
-              {partner.name}
-            </h3>
-            <span
-              className="text-[10px] font-semibold uppercase tracking-wide"
-              style={{ color: meta.color }}
-            >
-              {meta.label}
-            </span>
-          </div>
+          <h3 className="font-display text-sm font-semibold leading-snug text-ink sm:truncate sm:text-base">
+            {partner.name}
+          </h3>
           <p className="mt-1.5 flex items-start gap-1.5 text-xs text-slate-500 sm:text-sm">
             <MapPin className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-slate-400" />
             <span className="sm:line-clamp-1">{partner.address}</span>

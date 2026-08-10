@@ -42,17 +42,21 @@ export default function PartnerCard({ partner, isSelected, onSelect }) {
       >
         {/* brand mark */}
         <div className="mb-3 flex items-center gap-2.5">
-          <span
-            className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg font-display text-[12px] font-bold"
-            style={{ backgroundColor: meta.color, color: onBrand() }}
-          >
-            {meta.label?.[0]?.toUpperCase() ?? "P"}
-          </span>
-          <span
-            className="text-[11px] font-semibold uppercase tracking-wide"
-            style={{ color: meta.color }}
-          >
-            {meta.label}
+          <span className="flex h-10 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 px-2 py-2">
+            {meta.logo ? (
+              <img
+                src={meta.logo}
+                alt={meta.label}
+                className="h-full w-full object-contain"
+              />
+            ) : (
+              <span
+                className="flex h-full w-full items-center justify-center font-display text-[12px] font-bold"
+                style={{ backgroundColor: meta.color, color: onBrand() }}
+              >
+                {meta.label?.[0]?.toUpperCase() ?? "P"}
+              </span>
+            )}
           </span>
         </div>
 

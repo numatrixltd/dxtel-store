@@ -17,11 +17,18 @@ import PartnerListRow from "@/components/PartnerListRow";
 import useLazyReveal from "@/hooks/useLazyReveal";
 
 const TABS = [
-  { key: "all", label: "All Stores", color: "#0B1220", count: stores.length },
+  {
+    key: "all",
+    label: "All Stores",
+    color: "#0B1220",
+    logo: null,
+    count: stores.length,
+  },
   ...BRANDS.map((b) => ({
     key: b.key,
     label: b.label,
     color: b.color,
+    logo: b.logo,
     count: stores.filter((s) => s.brand === b.key).length,
   })),
 ];
@@ -87,6 +94,7 @@ export default function AuthorizedPartners() {
                 <button
                   key={tab.key}
                   onClick={() => handleTabChange(tab.key)}
+                  aria-label={tab.label}
                   className="relative flex flex-shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors sm:px-4"
                   style={{ color: isActive ? "#FFFFFF" : "#5B6472" }}
                 >
@@ -102,9 +110,24 @@ export default function AuthorizedPartners() {
                       style={{ backgroundColor: tab.color }}
                     />
                   )}
-                  <span className="relative z-10 whitespace-nowrap">
-                    {tab.label}
-                  </span>
+
+                  {tab.logo ? (
+                    <span className="relative z-10 flex h-6 w-12 flex-shrink-0 items-center justify-center">
+                      <img
+                        src={tab.logo}
+                        alt=""
+                        className="h-full w-full object-contain"
+                        style={{
+                          filter: isActive ? "brightness(0) invert(1)" : "none",
+                        }}
+                      />
+                    </span>
+                  ) : (
+                    <span className="relative z-10 whitespace-nowrap">
+                      {tab.label}
+                    </span>
+                  )}
+
                   <span
                     className="relative z-10 rounded-full px-1.5 py-0.5 text-[10px] font-bold"
                     style={{
