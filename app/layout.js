@@ -25,14 +25,17 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "ElectroLink BD | Authorized Retail & Dealer Network",
+  title: "DX TEL | Authorized Retail & Dealer Network",
   description:
     "Find ElectroLink's authorized retail chains and dealer points across Bangladesh. Genuine products, verified partners, nationwide coverage.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
+    >
       <body className="font-body antialiased flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
